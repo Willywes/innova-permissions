@@ -40,6 +40,31 @@ class PermissionController extends Controller
     }
 
 
+    public function cellEdit(Request $request)
+    {
+        try {
+
+            $project = Project::find($request->project_id);
+
+            if (!$project) {
+                return ApiResponse::JsonError(null, 'Proyecto no encontrado');
+            }
+
+            $this->setUseDatabase($project);
+
+            $permission = Permission::find($request->id);
+
+            if ($permission->update($request->except(['id', 'project_id']))) {
+                $permission->refresh();
+                return ApiResponse::JsonSuccess(['permission' => $permission], 'Permiso actualizado correctamente.');
+            }
+            return ApiResponse::JsonError(null, 'No se ha podido actualizar el permiso.');
+
+        } catch (\Exception $exception) {
+            return ApiResponse::JsonError(null, 'Exception ' . $exception->getMessage());
+        }
+    }
+
     private function setUseDatabase($project)
     {
         $database_connection = $project->database_connection;

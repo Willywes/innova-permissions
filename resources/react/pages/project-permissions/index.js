@@ -5,6 +5,7 @@ import Resume from "./components/Resume";
 import AlertError from "./components/AlertError";
 import ROUTES from "../../routes/routes";
 import Spinner from "../../components/Spinner";
+import Table from "./table/Table";
 
 const ProjectPermissions = ({match}) => {
 
@@ -72,6 +73,8 @@ const ProjectPermissions = ({match}) => {
                                 permissionsCount={permissionsCount}
                                 permissionsGroups={permissionsGroups}
                             />
+
+                            <Table project={project} permissions={permissions} getPermissions={getPermission}/>
 
                         </Fragment>
                         :

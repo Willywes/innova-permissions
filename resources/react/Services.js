@@ -81,5 +81,6 @@ export const ENDPOINT = {
     },
     PERMISSIONS : {
         INDEX : GetBaseURL() + 'permissions',
+        CELL_EDIT : GetBaseURL() + 'cell-edit',
     }
 }

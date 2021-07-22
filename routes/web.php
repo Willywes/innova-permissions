@@ -37,6 +37,7 @@ Route::prefix('api')
         Route::post('projects/destroy', [ProjectController::class, 'destroy']);
 
         Route::post('permissions', [PermissionController::class, 'index']);
+        Route::post('cell-edit', [PermissionController::class, 'cellEdit']);
 
     });
 
