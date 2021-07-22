@@ -2,6 +2,7 @@ import React, {Fragment, useState} from 'react';
 import {Button, Modal} from "react-bootstrap";
 import ROUTES from "../../../routes/routes";
 import {Link} from "react-router-dom";
+import SimpleCard from "../../../components/SimpleCard";
 
 const Resume = ({project, permissionsCount, permissionsGroups}) => {
 
@@ -15,26 +16,28 @@ const Resume = ({project, permissionsCount, permissionsGroups}) => {
 
     return (
         <Fragment>
-            <div className="row">
+            <div className="row mb-3">
                 <div className="col-12">
-                    <table className="table table-bordered">
-                        <thead>
-                        <tr>
-                            <th>Proyecto</th>
-                            <th>Database</th>
-                            <th>Cant. Permisos</th>
-                            <th>Cant. Grupos</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        <tr>
-                            <td>{project.name}</td>
-                            <td>{project.database_connection.database}</td>
-                            <td className="text-right">{permissionsCount}</td>
-                            <td className="text-right"><div className="btn-link pointer" onClick={handleShow}>{permissionsGroups.length}</div></td>
-                        </tr>
-                        </tbody>
-                    </table>
+                    <SimpleCard>
+                        <table className="table table-bordered">
+                            <thead>
+                            <tr>
+                                <th>Proyecto</th>
+                                <th>Database</th>
+                                <th>Cant. Permisos</th>
+                                <th>Cant. Grupos</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <td>{project.name}</td>
+                                <td>{project.database_connection.database}</td>
+                                <td className="text-right">{permissionsCount}</td>
+                                <td className="text-right"><div className="btn-link pointer" onClick={handleShow}>{permissionsGroups.length}</div></td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </SimpleCard>
                 </div>
             </div>
 
@@ -57,7 +60,7 @@ const Resume = ({project, permissionsCount, permissionsGroups}) => {
 
                 </Modal.Body>
                 <Modal.Footer className="justify-content-start">
-                    <button onClick={handleClose} className="btn btn-outline-secondary">
+                    <button onClick={handleClose} className="btn btn-outline-secondary btn-sm">
                         <i className="fas fa-times"/> Cerrar
                     </button>
                 </Modal.Footer>

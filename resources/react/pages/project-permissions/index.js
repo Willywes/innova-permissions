@@ -6,6 +6,7 @@ import AlertError from "./components/AlertError";
 import ROUTES from "../../routes/routes";
 import Spinner from "../../components/Spinner";
 import Table from "./table/Table";
+import SimpleCard from "../../components/SimpleCard";
 
 const ProjectPermissions = ({match}) => {
 
@@ -62,7 +63,7 @@ const ProjectPermissions = ({match}) => {
 
             {
                 hasError ?
-                    <AlertError message={hasErrorMessage} url={url}/>
+                    <SimpleCard><AlertError message={hasErrorMessage} url={url}/></SimpleCard>
                     :
 
                     project ?
@@ -74,11 +75,16 @@ const ProjectPermissions = ({match}) => {
                                 permissionsGroups={permissionsGroups}
                             />
 
-                            <Table project={project} permissions={permissions} getPermissions={getPermission}/>
+                            <Table project={project}
+                                   permissions={permissions}
+                                   permissionsGroups={permissionsGroups}
+                                   getPermissions={getPermission}
+                            />
 
                         </Fragment>
                         :
-                        <Spinner/>
+                        <SimpleCard><Spinner/></SimpleCard>
+
 
             }
 

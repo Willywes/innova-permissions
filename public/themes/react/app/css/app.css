@@ -1408,6 +1408,16 @@
     max-width: 1170px;
   }
 }
+body, #content-container {
+  background-color: #ecf0f5;
+  color: #4d627b !important;
+}
+
+.header {
+  background-color: #1976d2;
+  min-height: 150px;
+}
+
 .card-project {
   transition: 0.3s;
   cursor: pointer;
@@ -1424,4 +1434,53 @@
 .card-project-name {
   font-size: 20px;
   font-weight: bold;
+}
+
+.border-right-div {
+  border-right: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.card-header {
+  padding: 0.75rem 1.25rem;
+  margin-bottom: 0;
+  background-color: white;
+  border-bottom: 1px solid white;
+}
+
+.card-footer {
+  padding: 0.75rem 1.25rem;
+  background-color: white;
+  border-top: 1px solid white;
+}
+
+.row.g-2 {
+  margin-left: 0;
+  margin-right: 0;
+}
+
+.row.g-2 [class*=col-]:not(:first-child),
+.row.g-2 [class*=col-]:not(:last-child) {
+  padding-right: 5px;
+  padding-left: 5px;
+}
+
+.row.g-2 [class*=col-]:is(:first-child) {
+  padding-right: 5px;
+  padding-left: 0;
+}
+
+.row.g-2 [class*=col-]:is(:last-child) {
+  padding-right: 0px;
+  padding-left: 5px;
+}
+
+.row.no-gutter {
+  margin-left: 0;
+  margin-right: 0;
+}
+
+.row.no-gutter [class*=col-]:not(:first-child),
+.row.no-gutter [class*=col-]:not(:last-child) {
+  padding-right: 0;
+  padding-left: 0;
 }

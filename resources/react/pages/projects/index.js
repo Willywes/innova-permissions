@@ -32,7 +32,7 @@ const Projects = () => {
 
             <div className="col-md-4">
                 <Link to={ROUTES.PROJECT_CREATE.path}>
-                    <div className="card card-project mb-4" style={{height: '150px'}}>
+                    <div className="card card-project mb-4" style={{height: '147px'}}>
                         <div className="card-body d-flex">
                             <div className="m-auto text-success font-40">
                                 <i className="fas fa-plus-circle"/>
@@ -43,7 +43,7 @@ const Projects = () => {
             </div>
 
             {
-                projects.map(project => <div className="col-md-4"><CardProject project={project}/></div>)
+                projects.map(project => <div key={project.id} className="col-md-4"><CardProject project={project}/></div>)
             }
         </div>
     );
