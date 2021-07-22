@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {Fragment, useEffect, useState} from 'react';
 import DefaultTable from "../../../components/DefaultTable";
 import * as Services from "../../../Services";
 import cellEditFactory, {Type} from 'react-bootstrap-table2-editor';
@@ -6,11 +6,17 @@ import {Link} from "react-router-dom";
 import toastr from "toastr";
 import moment from "moment";
 import SimpleCard from "../../../components/SimpleCard";
+import ModalCreate from "../components/modal-create/ModalCreate";
 
 const Table = ({project, permissions, permissionsGroups, getPermissions}) => {
 
     const [tableLoaded, setTableLoaded] = useState(true);
     const [localPermissions, setLocalPermissions] = useState([]);
+
+    const [showCreate, setShowCreate] = useState(false);
+
+    const handleClose = () => setShowCreate(false);
+    const handleShow = () => setShowCreate(true);
 
     useEffect(() => {
         filterPermissions();
@@ -131,66 +137,75 @@ const Table = ({project, permissions, permissionsGroups, getPermissions}) => {
     }
 
     return (
-        <div className="row">
-            <div className="col-12">
-                <SimpleCard>
-                    <div className="row">
+        <Fragment>
+            <div className="row">
+                <div className="col-12">
+                    <SimpleCard>
+                        <div className="row">
 
-                        <div className="col-12 mb-3">
-                            <div className="row g-2">
-                                <div className="col-auto">
-                                    <button className="btn btn-success btn-sm">
-                                        <i className="fas fa-plus"/> Nuevo
-                                    </button>
-                                </div>
-                                <div className="col-auto">
-                                    <select
-                                        className="form-control form-control-sm"
-                                        onChange={e => filterPermissions(e.target.value)}
-                                    >
-                                        <option value="all">Todos</option>
-                                        {
-                                            permissionsGroups.map((p, i) => (<option key={i} value={p}>{p}</option>))
-                                        }
-                                    </select>
-                                </div>
-                                <div className="col-auto ml-auto">
-                                    <button className="btn btn-primary btn-sm">
-                                        <i className="fas fa-download"/> JSON
-                                    </button>
-                                </div>
-                                <div className="col-auto">
-                                    <button className="btn btn-primary btn-sm">
-                                        <i className="fas fa-download"/> Seeder
-                                    </button>
-                                </div>
-                                <div className="col-auto">
-                                    <button className="btn btn-primary btn-sm">
-                                        <i className="fas fa-download"/> SQL Script
-                                    </button>
+                            <div className="col-12 mb-3">
+                                <div className="row g-2">
+                                    <div className="col-auto">
+                                        <button className="btn btn-success btn-sm" onClick={handleShow}>
+                                            <i className="fas fa-plus"/> Nuevo
+                                        </button>
+                                    </div>
+                                    <div className="col-auto">
+                                        <select
+                                            className="form-control form-control-sm"
+                                            onChange={e => filterPermissions(e.target.value)}
+                                        >
+                                            <option value="all">Todos</option>
+                                            {
+                                                permissionsGroups.map((p, i) => (
+                                                    <option key={i} value={p}>{p}</option>))
+                                            }
+                                        </select>
+                                    </div>
+                                    <div className="col-auto ml-auto">
+                                        <button className="btn btn-primary btn-sm">
+                                            <i className="fas fa-download"/> JSON
+                                        </button>
+                                    </div>
+                                    <div className="col-auto">
+                                        <button className="btn btn-primary btn-sm">
+                                            <i className="fas fa-download"/> Seeder
+                                        </button>
+                                    </div>
+                                    <div className="col-auto">
+                                        <button className="btn btn-primary btn-sm">
+                                            <i className="fas fa-download"/> SQL Script
+                                        </button>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
 
-                        <div className="col-12">
+                            <div className="col-12">
 
-                            <DefaultTable columns={columns}
-                                          objects={localPermissions}
-                                          tableLoaded={tableLoaded}
-                                          pagination={false}
-                                          order={true}
-                                          cellEdit={cellEditFactory({
-                                              mode: 'dbclick',
-                                              blurToSave: true,
-                                              // beforeSaveCell: saveCell
-                                          })}
-                                          onTableChange={handleTableChange}
-                            />
+                                <DefaultTable columns={columns}
+                                              objects={localPermissions}
+                                              tableLoaded={tableLoaded}
+                                              pagination={false}
+                                              order={true}
+                                              cellEdit={cellEditFactory({
+                                                  mode: 'dbclick',
+                                                  blurToSave: true,
+                                                  // beforeSaveCell: saveCell
+                                              })}
+                                              onTableChange={handleTableChange}
+                                />
+                            </div>
                         </div>
-                    </div>
-                </SimpleCard>
+                    </SimpleCard>
+                </div>
             </div>
-        </div>
+            <ModalCreate
+                show={showCreate}
+                handleClose={handleClose}
+                permissionsGroups={permissionsGroups}
+                getPermissions={() => getPermissions(project.id)}
+            />
+        </Fragment>
     );
 };
 

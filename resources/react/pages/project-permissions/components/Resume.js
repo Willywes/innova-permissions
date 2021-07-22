@@ -1,10 +1,8 @@
 import React, {Fragment, useState} from 'react';
 import {Button, Modal} from "react-bootstrap";
-import ROUTES from "../../../routes/routes";
-import {Link} from "react-router-dom";
 import SimpleCard from "../../../components/SimpleCard";
 
-const Resume = ({project, permissionsCount, permissionsGroups}) => {
+const Resume = ({project, permissionsCount, permissionsGroups, getPermissions}) => {
 
     const [show, setShow] = useState(false);
 
