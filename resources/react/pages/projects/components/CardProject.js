@@ -16,7 +16,6 @@ const CardProject = ({project, destroy}) => {
         });
     }, [project])
 
-
     return (
         <div className="card card-project mb-4">
             <div className="card-body d-flex">
@@ -32,7 +31,7 @@ const CardProject = ({project, destroy}) => {
                 <div className="row">
                     <div className="col">
                         <Link to={url.permissions} className="btn btn-outline-primary btn-sm">
-                            Proyectos
+                            Gestionar Permisos
                         </Link>
                     </div>
                     <div className="col-auto px-1 text-right">

@@ -44,9 +44,7 @@ const ModalExport = ({type, data, show, handleClose}) => {
         console.log(data);
         let _querys = '';
         obj.map(item => {
-            _querys = `${_querys}
-            INSERT
-            INTO permissions (id, name, public_name, public_group, public_description, guard_name, created_at, updated_at) VALUES (${item.id},${item.name},${item.public_name} ,${item.public_group} ,${item.public_description} ,${item.guard_name} ,${item.created_at} ,${item.updated_at});`;
+            _querys = `${_querys}INSERT INTO permissions (id, name, public_name, public_group, public_description, guard_name, created_at, updated_at) VALUES (${item.id},${item.name},${item.public_name} ,${item.public_group} ,${item.public_description} ,${item.guard_name} ,${item.created_at} ,${item.updated_at});`;
             _querys = _querys + '\r\n';
         })
         console.log(_querys);
@@ -69,7 +67,7 @@ const ModalExport = ({type, data, show, handleClose}) => {
                 <div className="col-row">
                     <div className="col-12 pb-3">
                         <button className="btn btn-info btn-sm" onClick={copyToClipboard}>
-                            <i className="far fa-copy"/> Copiar al clipboard
+                            <i className="far fa-copy"/> Copiar al Clipboard
                         </button>
                     </div>
                     <div className="col-12">

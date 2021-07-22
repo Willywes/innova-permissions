@@ -4113,7 +4113,7 @@ var ModalExport = function ModalExport(_ref) {
     console.log(data);
     var _querys = '';
     obj.map(function (item) {
-      _querys = "".concat(_querys, "\n            INSERT\n            INTO permissions (id, name, public_name, public_group, public_description, guard_name, created_at, updated_at) VALUES (").concat(item.id, ",").concat(item.name, ",").concat(item.public_name, " ,").concat(item.public_group, " ,").concat(item.public_description, " ,").concat(item.guard_name, " ,").concat(item.created_at, " ,").concat(item.updated_at, ");");
+      _querys = "".concat(_querys, "INSERT INTO permissions (id, name, public_name, public_group, public_description, guard_name, created_at, updated_at) VALUES (").concat(item.id, ",").concat(item.name, ",").concat(item.public_name, " ,").concat(item.public_group, " ,").concat(item.public_description, " ,").concat(item.guard_name, " ,").concat(item.created_at, " ,").concat(item.updated_at, ");");
       _querys = _querys + '\r\n';
     });
     console.log(_querys);
@@ -4146,7 +4146,7 @@ var ModalExport = function ModalExport(_ref) {
             onClick: copyToClipboard,
             children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("i", {
               className: "far fa-copy"
-            }), " Copiar al clipboard"]
+            }), " Copiar al Clipboard"]
           })
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
           className: "col-12",
@@ -5050,7 +5050,7 @@ var CardProject = function CardProject(_ref) {
           children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_3__.Link, {
             to: url.permissions,
             className: "btn btn-outline-primary btn-sm",
-            children: "Proyectos"
+            children: "Gestionar Permisos"
           })
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
           className: "col-auto px-1 text-right",
