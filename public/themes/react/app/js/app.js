@@ -3080,17 +3080,85 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-
 var Custom = function Custom(_ref) {
   var data = _ref.data,
       setData = _ref.setData,
       permissionsGroups = _ref.permissionsGroups;
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.Fragment, {
-    children: "Hello Custom!"
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
+    className: "row"
   });
 };
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Custom);
+
+/***/ }),
+
+/***/ "./resources/react/pages/project-permissions/components/modal-create/FooterButtons.js":
+/*!********************************************************************************************!*\
+  !*** ./resources/react/pages/project-permissions/components/modal-create/FooterButtons.js ***!
+  \********************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+
+
+
+
+
+var FooterButtons = function FooterButtons(_ref) {
+  var section = _ref.section,
+      setSection = _ref.setSection,
+      handleClose = _ref.handleClose,
+      store = _ref.store,
+      sending = _ref.sending;
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+    className: "row",
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
+      className: "col-12",
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("hr", {})
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
+      className: "col-6",
+      children: section == 'init' ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("button", {
+        onClick: handleClose,
+        className: "btn btn-outline-secondary btn-sm",
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("i", {
+          className: "fas fa-times"
+        }), " Cancelar"]
+      }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("button", {
+        onClick: function onClick() {
+          return setSection('init');
+        },
+        className: "btn btn-outline-secondary btn-sm",
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("i", {
+          className: "fas fa-arrow-left"
+        }), " Atr\xE1s"]
+      })
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
+      className: "col-6 text-right",
+      children: section != 'init' ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("button", {
+        className: "btn btn-primary btn-sm",
+        onClick: store,
+        disabled: sending,
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("i", {
+          className: "fa fa-save"
+        }), " Guardar"]
+      }) : null
+    })]
+  });
+};
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (FooterButtons);
+
+if (document.getElementById('Buttons')) {
+  react_dom__WEBPACK_IMPORTED_MODULE_1__.render( /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(FooterButtons, {}), document.getElementById('Buttons'));
+}
 
 /***/ }),
 
@@ -3106,43 +3174,19 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
-
-
-
-
-var Groups = function Groups(_ref) {
-  var data = _ref.data,
-      setData = _ref.setData,
-      permissionsGroups = _ref.permissionsGroups;
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.Fragment, {
-    children: "Hello Groups!"
-  });
-};
-
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Groups);
-
-/***/ }),
-
-/***/ "./resources/react/pages/project-permissions/components/modal-create/ModalCreate.js":
-/*!******************************************************************************************!*\
-  !*** ./resources/react/pages/project-permissions/components/modal-create/ModalCreate.js ***!
-  \******************************************************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react-bootstrap */ "./node_modules/react-bootstrap/esm/Modal.js");
-/* harmony import */ var _Groups__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Groups */ "./resources/react/pages/project-permissions/components/modal-create/Groups.js");
+/* harmony import */ var _helpers_GlobalUtils__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../../helpers/GlobalUtils */ "./resources/react/helpers/GlobalUtils.js");
 /* harmony import */ var _Services__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../Services */ "./resources/react/Services.js");
 /* harmony import */ var toastr__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! toastr */ "./node_modules/toastr/toastr.js");
 /* harmony import */ var toastr__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(toastr__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var _Custom__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./Custom */ "./resources/react/pages/project-permissions/components/modal-create/Custom.js");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+/* harmony import */ var _FooterButtons__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./FooterButtons */ "./resources/react/pages/project-permissions/components/modal-create/FooterButtons.js");
+/* harmony import */ var _Helper__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./Helper */ "./resources/react/pages/project-permissions/components/modal-create/Helper.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) { symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); } keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
 
 function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
@@ -3164,8 +3208,384 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
+
+var Groups = function Groups(_ref) {
+  var projectId = _ref.projectId,
+      section = _ref.section,
+      setSection = _ref.setSection,
+      handleClose = _ref.handleClose,
+      permissionsGroups = _ref.permissionsGroups,
+      getPermissions = _ref.getPermissions;
+
+  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)({
+    base_name: 'intranet',
+    group: '',
+    guard: 'intranet',
+    verbs: {
+      index: true,
+      create: true,
+      edit: true,
+      show: true,
+      destroy: true,
+      active: true,
+      changeStatus: true
+    }
+  }),
+      _useState2 = _slicedToArray(_useState, 2),
+      localData = _useState2[0],
+      setLocalData = _useState2[1];
+
+  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
+      _useState4 = _slicedToArray(_useState3, 2),
+      sending = _useState4[0],
+      setSending = _useState4[1];
+
+  var handleLocalData = function handleLocalData(e) {
+    if (e.target.name == 'group') {
+      var _objectSpread2;
+
+      setLocalData(_objectSpread(_objectSpread({}, localData), {}, (_objectSpread2 = {}, _defineProperty(_objectSpread2, e.target.name, e.target.value), _defineProperty(_objectSpread2, 'base_name', 'intranet.' + e.target.value.toLowerCase().replace(/ /g, '-')), _objectSpread2)));
+    } else {
+      setLocalData(_objectSpread(_objectSpread({}, localData), {}, _defineProperty({}, e.target.name, e.target.value)));
+    }
+  };
+
+  var handleVerbs = function handleVerbs(e, key) {
+    var verbs = _objectSpread(_objectSpread({}, localData.verbs), {}, _defineProperty({}, e.target.name, !localData.verbs[key]));
+
+    setLocalData(_objectSpread(_objectSpread({}, localData), {}, {
+      verbs: verbs
+    }));
+  };
+
+  var store = function store() {
+    if (validate()) {
+      setSending(true);
+      var data = [];
+      Object.keys(localData.verbs).map(function (verb, i) {
+        data.push({
+          name: "".concat(localData.base_name, ".").concat(verb),
+          guard_name: localData.guard,
+          public_name: (0,_Helper__WEBPACK_IMPORTED_MODULE_5__.processPublicName)(verb, localData.group),
+          public_group: localData.group,
+          public_description: (0,_Helper__WEBPACK_IMPORTED_MODULE_5__.processPublicDescription)(verb, localData.group)
+        });
+      });
+      _Services__WEBPACK_IMPORTED_MODULE_2__.DoPost(_Services__WEBPACK_IMPORTED_MODULE_2__.ENDPOINT.PERMISSIONS.STORE, {
+        project_id: projectId,
+        data: data
+      }).then(function (response) {
+        _Services__WEBPACK_IMPORTED_MODULE_2__.Response({
+          response: response,
+          success: function success() {
+            toastr__WEBPACK_IMPORTED_MODULE_3___default().success(response.message);
+            getPermissions();
+            handleClose();
+          },
+          warning: function warning() {
+            toastr__WEBPACK_IMPORTED_MODULE_3___default().warning(response.message);
+          },
+          error: function error() {
+            toastr__WEBPACK_IMPORTED_MODULE_3___default().error(response.message);
+          }
+        });
+        setSending(false);
+      })["catch"](function (error) {
+        _Services__WEBPACK_IMPORTED_MODULE_2__.ErrorCatch(error);
+        setSending(false);
+      });
+    }
+  };
+
+  var validate = function validate() {
+    var errors = false;
+
+    if (!localData.base_name) {
+      (0,_helpers_GlobalUtils__WEBPACK_IMPORTED_MODULE_1__.setInputError)('base_name', 'Ingrese un nombre base.');
+      errors = true;
+    }
+
+    if (!localData.group) {
+      (0,_helpers_GlobalUtils__WEBPACK_IMPORTED_MODULE_1__.setInputError)('group', 'Ingrese un grupo.');
+      errors = true;
+    }
+
+    if (permissionsGroups.includes(localData.group)) {
+      (0,_helpers_GlobalUtils__WEBPACK_IMPORTED_MODULE_1__.setInputError)('group', 'Este grupo ya existe.');
+      errors = true;
+    }
+
+    if (!localData.guard) {
+      (0,_helpers_GlobalUtils__WEBPACK_IMPORTED_MODULE_1__.setInputError)('guard', 'Ingrese un guard.');
+      errors = true;
+    }
+
+    var keys = 0;
+    Object.keys(localData.verbs).map(function (verb, i) {
+      if (localData.verbs[verb]) {
+        keys = keys + 1;
+      }
+    });
+
+    if (keys == 0) {
+      (0,_helpers_GlobalUtils__WEBPACK_IMPORTED_MODULE_1__.setInputError)('verbs', 'Seleccione al menos un verbo.');
+      errors = true;
+    }
+
+    return !errors;
+  };
+
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, {
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("div", {
+      className: "row",
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("div", {
+        className: "col",
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("div", {
+          className: "form-group row",
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("label", {
+            htmlFor: "group",
+            className: "col-sm-4 col-form-label",
+            children: "Nombre Grupo"
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("div", {
+            className: "col-md-8",
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("input", {
+              type: "text",
+              className: "form-control form-control-custom",
+              id: "group",
+              name: "group",
+              value: localData.group,
+              onChange: handleLocalData,
+              onFocus: _helpers_GlobalUtils__WEBPACK_IMPORTED_MODULE_1__.setCleanInputError
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("div", {
+              className: "invalid-feedback"
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("div", {
+              className: "text-muted font-12",
+              children: "Ej: Usuarios, Roles, Clientes (Plural)"
+            })]
+          })]
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("div", {
+          className: "form-group row",
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("label", {
+            htmlFor: "base_name",
+            className: "col-sm-4 col-form-label",
+            children: "Base Permisos"
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("div", {
+            className: "col-md-8",
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("input", {
+              type: "text",
+              className: "form-control form-control-custom",
+              id: "base_name",
+              name: "base_name",
+              value: localData.base_name,
+              onChange: handleLocalData,
+              onFocus: _helpers_GlobalUtils__WEBPACK_IMPORTED_MODULE_1__.setCleanInputError
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("div", {
+              className: "invalid-feedback"
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("div", {
+              className: "text-muted font-12",
+              children: "Ej: intranet.users, intranet.roles, intranet.config.product-types (sin punto final)"
+            })]
+          })]
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("div", {
+          className: "form-group row",
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("label", {
+            htmlFor: "guard",
+            className: "col-sm-4 col-form-label",
+            children: "Guard Laravel"
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("div", {
+            className: "col-md-8",
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("select", {
+              className: "form-control form-control-custom",
+              id: "guard",
+              name: "guard",
+              value: localData.guard,
+              onChange: handleLocalData,
+              onFocus: _helpers_GlobalUtils__WEBPACK_IMPORTED_MODULE_1__.setCleanInputError,
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("option", {
+                value: "intranet",
+                children: "intranet"
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("option", {
+                value: "customer",
+                children: "customer"
+              })]
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("div", {
+              className: "invalid-feedback"
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("div", {
+              className: "text-muted font-12",
+              children: "Corresponde a los guard del auth de laravel"
+            })]
+          })]
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("div", {
+          className: "form-group row",
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("label", {
+            htmlFor: "guard",
+            className: "col-sm-4 col-form-label",
+            children: "Laravel Verbs"
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("div", {
+            className: "col-md-8",
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("div", {
+              className: "row",
+              children: Object.keys(localData.verbs).map(function (verb, i) {
+                return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("div", {
+                  className: "col-12",
+                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("div", {
+                    className: "custom-control custom-switch",
+                    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("input", {
+                      type: "checkbox",
+                      className: "custom-control-input",
+                      id: verb,
+                      name: verb,
+                      checked: localData.verbs[verb],
+                      onChange: function onChange(e) {
+                        return handleVerbs(e, verb);
+                      }
+                    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("label", {
+                      className: "custom-control-label font-12 lh-23 light",
+                      htmlFor: verb,
+                      children: verb
+                    })]
+                  })
+                }, i);
+              })
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("div", {
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("input", {
+                type: "hidden",
+                id: "verbs"
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("div", {
+                className: "invalid-feedback"
+              })]
+            })]
+          })]
+        })]
+      })
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_FooterButtons__WEBPACK_IMPORTED_MODULE_4__.default, {
+      store: store,
+      section: section,
+      setSection: setSection,
+      sending: sending,
+      handleClose: handleClose
+    })]
+  });
+};
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Groups);
+
+/***/ }),
+
+/***/ "./resources/react/pages/project-permissions/components/modal-create/Helper.js":
+/*!*************************************************************************************!*\
+  !*** ./resources/react/pages/project-permissions/components/modal-create/Helper.js ***!
+  \*************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "processPublicName": () => (/* binding */ processPublicName),
+/* harmony export */   "processPublicDescription": () => (/* binding */ processPublicDescription)
+/* harmony export */ });
+//     index: true,
+//     create: true,
+//     edit: true,
+//     show: true,
+//     destroy: true,
+//     active: true,
+//     changeStatus: true,
+var processPublicName = function processPublicName(verb, group) {
+  switch (verb) {
+    case 'index':
+      return "Listar ".concat(group.toLowerCase());
+
+    case 'create':
+      return "Crear ".concat(group.toLowerCase());
+
+    case 'edit':
+      return "Editar ".concat(group.toLowerCase());
+
+    case 'show':
+      return "Ver ".concat(group.toLowerCase());
+
+    case 'destroy':
+      return "Eliminar ".concat(group.toLowerCase());
+
+    case 'active':
+      return "Activar/Desactivar ".concat(group.toLowerCase());
+
+    case 'changeStatus':
+      return "Cambiar estado de ".concat(group.toLowerCase());
+
+    default:
+      return '';
+  }
+};
+var processPublicDescription = function processPublicDescription(verb, group) {
+  switch (verb) {
+    case 'index':
+      return "Permite ver la lista de ".concat(group.toLowerCase());
+
+    case 'create':
+      return "Permite crear ".concat(group.toLowerCase());
+
+    case 'edit':
+      return "Permite editar ".concat(group.toLowerCase());
+
+    case 'show':
+      return "Permite ver ".concat(group.toLowerCase());
+
+    case 'destroy':
+      return "Permite eliminar ".concat(group.toLowerCase());
+
+    case 'active':
+      return "Permite activar/desactivar ".concat(group.toLowerCase());
+
+    case 'changeStatus':
+      return "Permite cambiar estado de ".concat(group.toLowerCase());
+
+    default:
+      return '';
+  }
+};
+
+/***/ }),
+
+/***/ "./resources/react/pages/project-permissions/components/modal-create/ModalCreate.js":
+/*!******************************************************************************************!*\
+  !*** ./resources/react/pages/project-permissions/components/modal-create/ModalCreate.js ***!
+  \******************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-bootstrap */ "./node_modules/react-bootstrap/esm/Modal.js");
+/* harmony import */ var _Groups__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Groups */ "./resources/react/pages/project-permissions/components/modal-create/Groups.js");
+/* harmony import */ var _Custom__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Custom */ "./resources/react/pages/project-permissions/components/modal-create/Custom.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+function _iterableToArrayLimit(arr, i) { var _i = arr == null ? null : typeof Symbol !== "undefined" && arr[Symbol.iterator] || arr["@@iterator"]; if (_i == null) return; var _arr = []; var _n = true; var _d = false; var _s, _e; try { for (_i = _i.call(arr); !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
+
+
+
+
+
+
+
 var ModalCreate = function ModalCreate(_ref) {
-  var show = _ref.show,
+  var projectId = _ref.projectId,
+      show = _ref.show,
       handleClose = _ref.handleClose,
       permissionsGroups = _ref.permissionsGroups,
       getPermissions = _ref.getPermissions;
@@ -3175,128 +3595,59 @@ var ModalCreate = function ModalCreate(_ref) {
       section = _useState2[0],
       setSection = _useState2[1];
 
-  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
-      _useState4 = _slicedToArray(_useState3, 2),
-      sending = _useState4[0],
-      setSending = _useState4[1];
-
-  var _useState5 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)([]),
-      _useState6 = _slicedToArray(_useState5, 2),
-      data = _useState6[0],
-      setData = _useState6[1];
-
-  var store = function store() {
-    setSending(true);
-    _Services__WEBPACK_IMPORTED_MODULE_2__.DoPost(_Services__WEBPACK_IMPORTED_MODULE_2__.ENDPOINT.PERMISSIONS.STORE, data).then(function (response) {
-      _Services__WEBPACK_IMPORTED_MODULE_2__.Response({
-        response: response,
-        success: function success() {
-          toastr__WEBPACK_IMPORTED_MODULE_3___default().success(response.message);
-          getPermissions();
-          setData([]);
-          handleClose();
-        },
-        warning: function warning() {
-          toastr__WEBPACK_IMPORTED_MODULE_3___default().warning(response.message);
-        },
-        error: function error() {
-          toastr__WEBPACK_IMPORTED_MODULE_3___default().error(response.message);
-        }
-      });
-      setSending(false);
-    })["catch"](function (error) {
-      _Services__WEBPACK_IMPORTED_MODULE_2__.ErrorCatch(error);
-      setSending(false);
-    });
-  };
-
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)(react_bootstrap__WEBPACK_IMPORTED_MODULE_6__.default, {
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)(react_bootstrap__WEBPACK_IMPORTED_MODULE_4__.default, {
     show: show,
     onHide: handleClose,
     size: "lg",
-    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(react_bootstrap__WEBPACK_IMPORTED_MODULE_6__.default.Header, {
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(react_bootstrap__WEBPACK_IMPORTED_MODULE_4__.default.Header, {
       closeButton: true,
-      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(react_bootstrap__WEBPACK_IMPORTED_MODULE_6__.default.Title, {
-        children: "Nuevo Permiso"
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(react_bootstrap__WEBPACK_IMPORTED_MODULE_4__.default.Title, {
+        children: "Nuevos Permisos"
       })
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)(react_bootstrap__WEBPACK_IMPORTED_MODULE_6__.default.Body, {
-      children: [section == 'init' ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)(react_bootstrap__WEBPACK_IMPORTED_MODULE_4__.default.Body, {
+      children: [section == 'init' ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
         className: "row",
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
           className: "col-12",
-          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
             className: "alert alert-info",
-            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("p", {
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("p", {
               children: "Seleccione si desea crear un grupo de permiso o a\xF1adir uno a un grupo existente."
             })
           })
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
           className: "col-6 text-right",
-          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("button", {
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("button", {
             className: "btn btn-outline-success",
             onClick: function onClick() {
               return setSection('groups');
             },
-            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("span", {
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("span", {
               className: "font-14",
               children: "Nuevo Grupo"
             })
           })
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
           className: "col-6",
-          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("button", {
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("button", {
             className: "btn btn-outline-success",
             onClick: function onClick() {
               return setSection('custom');
             },
-            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("span", {
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("span", {
               className: "font-14",
               children: "A\xF1adir a Grupo"
             })
           })
         })]
-      }) : null, section == 'groups' ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_Groups__WEBPACK_IMPORTED_MODULE_1__.default, {
-        data: data,
-        setData: setData,
-        permissionsGroups: permissionsGroups
-      }) : null, section == 'custom' ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_Custom__WEBPACK_IMPORTED_MODULE_4__.default, {
-        data: data,
-        setData: setData,
-        permissionsGroups: permissionsGroups
-      }) : null]
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(react_bootstrap__WEBPACK_IMPORTED_MODULE_6__.default.Footer, {
-      className: "justify-content-start d-block",
-      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
-        className: "row",
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
-          className: "col px-0",
-          children: section == 'init' ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("button", {
-            onClick: handleClose,
-            className: "btn btn-outline-secondary btn-sm",
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("i", {
-              className: "fas fa-times"
-            }), " Cancelar"]
-          }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("button", {
-            onClick: function onClick() {
-              return setSection('init');
-            },
-            className: "btn btn-outline-secondary btn-sm",
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("i", {
-              className: "fas fa-arrow-left"
-            }), " Atr\xE1s"]
-          })
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
-          className: "col px-0 text-right",
-          children: section != 'init' ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("button", {
-            className: "btn btn-primary btn-sm",
-            onClick: store,
-            disabled: sending,
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("i", {
-              className: "fa fa-save"
-            }), " Guardar"]
-          }) : null
-        })]
-      })
+      }) : null, section == 'groups' ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_Groups__WEBPACK_IMPORTED_MODULE_1__.default, {
+        projectId: projectId,
+        section: section,
+        setSection: setSection,
+        permissionsGroups: permissionsGroups,
+        getPermissions: getPermissions,
+        handleClose: handleClose
+      }) : null, section == 'custom' ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_Custom__WEBPACK_IMPORTED_MODULE_2__.default, {}) : null]
     })]
   });
 };
@@ -3749,6 +4100,7 @@ var Table = function Table(_ref) {
         })
       })
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_components_modal_create_ModalCreate__WEBPACK_IMPORTED_MODULE_7__.default, {
+      projectId: project.id,
       show: showCreate,
       handleClose: handleClose,
       permissionsGroups: permissionsGroups,

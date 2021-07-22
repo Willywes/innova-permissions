@@ -200,6 +200,7 @@ const Table = ({project, permissions, permissionsGroups, getPermissions}) => {
                 </div>
             </div>
             <ModalCreate
+                projectId={project.id}
                 show={showCreate}
                 handleClose={handleClose}
                 permissionsGroups={permissionsGroups}

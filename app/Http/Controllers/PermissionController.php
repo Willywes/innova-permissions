@@ -39,7 +39,6 @@ class PermissionController extends Controller
         }
     }
 
-
     public function cellEdit(Request $request)
     {
         try {
@@ -59,6 +58,31 @@ class PermissionController extends Controller
                 return ApiResponse::JsonSuccess(['permission' => $permission], 'Permiso actualizado correctamente.');
             }
             return ApiResponse::JsonError(null, 'No se ha podido actualizar el permiso.');
+
+        } catch (\Exception $exception) {
+            return ApiResponse::JsonError(null, 'Exception ' . $exception->getMessage());
+        }
+    }
+
+    public function store(Request $request)
+    {
+        try {
+            $project = Project::find($request->project_id);
+
+            if (!$project) {
+                return ApiResponse::JsonError(null, 'Proyecto no encontrado');
+            }
+
+            $this->setUseDatabase($project);
+
+            if ($request->data) {
+                foreach ($request->data as $data) {
+                    Permission::create($data);
+                }
+                return ApiResponse::JsonSuccess(null, 'Permisos creados correctamente.');
+            } else {
+                return ApiResponse::JsonError(null, 'No se recibieron permisos para registrar.');
+            }
 
         } catch (\Exception $exception) {
             return ApiResponse::JsonError(null, 'Exception ' . $exception->getMessage());
