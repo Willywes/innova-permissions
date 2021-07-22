@@ -38,6 +38,7 @@ Route::prefix('api')
 
         Route::post('permissions', [PermissionController::class, 'index']);
         Route::post('permissions/store', [PermissionController::class, 'store']);
+        Route::post('permissions/destroy', [PermissionController::class, 'destroy']);
         Route::post('cell-edit', [PermissionController::class, 'cellEdit']);
 
     });

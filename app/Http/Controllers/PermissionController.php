@@ -89,6 +89,31 @@ class PermissionController extends Controller
         }
     }
 
+    public function destroy(Request $request)
+    {
+        try {
+            $project = Project::find($request->project_id);
+
+            if (!$project) {
+                return ApiResponse::JsonError(null, 'Proyecto no encontrado');
+            }
+
+            $this->setUseDatabase($project);
+
+            $permission = Permission::find($request->id);
+
+            if ($permission->delete()) {
+                return ApiResponse::JsonSuccess(null, 'Permiso eliminado correctamente.');
+            }
+
+            return ApiResponse::JsonError(null, 'No se ha podido eliminar el permiso.');
+
+        } catch (\Exception $exception) {
+            return ApiResponse::JsonError(null, 'Exception ' . $exception->getMessage());
+        }
+    }
+
+
     private function setUseDatabase($project)
     {
         $database_connection = $project->database_connection;

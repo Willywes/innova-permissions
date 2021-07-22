@@ -7,11 +7,13 @@ import toastr from "toastr";
 import moment from "moment";
 import SimpleCard from "../../../components/SimpleCard";
 import ModalCreate from "../components/modal-create/ModalCreate";
+import SweetAlert from "sweetalert2";
 
 const Table = ({project, permissions, permissionsGroups, getPermissions}) => {
 
     const [tableLoaded, setTableLoaded] = useState(true);
     const [localPermissions, setLocalPermissions] = useState([]);
+    const [groupSelected, setGroupSelected] = useState('all')
 
     const [showCreate, setShowCreate] = useState(false);
 
@@ -20,13 +22,13 @@ const Table = ({project, permissions, permissionsGroups, getPermissions}) => {
 
     useEffect(() => {
         filterPermissions();
-    }, [permissions])
+    }, [permissions, groupSelected])
 
-    const filterPermissions = (group = 'all') => {
-        if (group === 'all') {
+    const filterPermissions = () => {
+        if (groupSelected === 'all') {
             setLocalPermissions(permissions)
         } else {
-            const list = permissions.filter(f => f.public_group == group);
+            const list = permissions.filter(f => f.public_group === groupSelected);
             setLocalPermissions(list);
         }
     }
@@ -96,7 +98,7 @@ const Table = ({project, permissions, permissionsGroups, getPermissions}) => {
             }
         },
         {
-            text: 'Laravel Guard',
+            text: 'Guard',
             dataField: 'guard_name',
             sort: true,
             classes: 'nowrap-cell',
@@ -107,6 +109,19 @@ const Table = ({project, permissions, permissionsGroups, getPermissions}) => {
             },
             editor: {
                 type: Type.TEXT,
+            }
+        },
+        {
+            text: '',
+            dataField: 'edit',
+            sort: false,
+            classes: 'nowrap-cell nowrap-cell-no-min',
+            headerClasses: 'nowrap-cell nowrap-cell-no-min',
+            formatter: (cell, row) => {
+                return  <div onClick={() => destroy(row.id, row.name)}
+                             className="text-danger pointer mx-1" title="Eliminar">
+                    <i className="fa fa-trash"/>
+                </div>
             }
         },
     ];
@@ -130,10 +145,49 @@ const Table = ({project, permissions, permissionsGroups, getPermissions}) => {
                     toastr.error(response.message)
                 },
             });
+        }).catch(error => {
+            Services.ErrorCatch(error);
+        });
+    }
+
+    const destroy = (id, name = 'este registro') => {
+
+        SweetAlert.fire({
+            title: '¿Estas seguro?',
+            html: 'Si eliminas <b>' + name + '</b>, la información será irrecuperable. considera que puedes perder la relación de los roles de los usuarios activos.',
+            icon: 'warning',
+            imageSize: '120x120',
+            showCancelButton: true,
+            confirmButtonColor: '#92c755',
+            cancelButtonColor: '#f22314 ',
+            confirmButtonText: 'Si, eliminar!',
+            cancelButtonText: 'No, cancelar!',
+            reverseButtons: false,
+
+        }).then((result) => {
+            if (result.value) {
+                Services.DoPost(Services.ENDPOINT.PERMISSIONS.DESTROY, {
+                    project_id: project.id,
+                    id: id,
+                }).then(response => {
+                    Services.Response({
+                        response: response,
+                        success: () => {
+                            toastr.success(response.message)
+                            getPermissions(project.id)
+                        },
+                        warning: () => {
+                            toastr.warning(response.message)
+                        },
+                        error: () => {
+                            toastr.error(response.message)
+                        },
+                    });
+                }).catch(error => {
+                    Services.ErrorCatch(error);
+                });
+            }
         })
-            .catch(error => {
-                Services.ErrorCatch(error);
-            });
     }
 
     return (
@@ -153,7 +207,7 @@ const Table = ({project, permissions, permissionsGroups, getPermissions}) => {
                                     <div className="col-auto">
                                         <select
                                             className="form-control form-control-sm"
-                                            onChange={e => filterPermissions(e.target.value)}
+                                            onChange={e => setGroupSelected(e.target.value)}
                                         >
                                             <option value="all">Todos</option>
                                             {
@@ -203,6 +257,7 @@ const Table = ({project, permissions, permissionsGroups, getPermissions}) => {
                 projectId={project.id}
                 show={showCreate}
                 handleClose={handleClose}
+                permissions={permissions}
                 permissionsGroups={permissionsGroups}
                 getPermissions={() => getPermissions(project.id)}
             />

@@ -1,5 +1,5 @@
 import React, {Fragment, useState} from 'react';
-import {setCleanInputError, setInputError} from "../../../../helpers/GlobalUtils";
+import {setCleanInputError, setInputError, slug} from "../../../../helpers/GlobalUtils";
 import {Form} from "react-bootstrap";
 import * as Services from "../../../../Services";
 import toastr from "toastr";
@@ -7,7 +7,7 @@ import FooterActions from "./FooterButtons";
 import {processPublicDescription, processPublicName} from "./Helper";
 
 const Groups = ({projectId, section, setSection, handleClose, permissionsGroups, getPermissions}) => {
-
+    const [sending, setSending] = useState(false);
     const [localData, setLocalData] = useState({
         base_name: 'intranet',
         group: '',
@@ -22,7 +22,7 @@ const Groups = ({projectId, section, setSection, handleClose, permissionsGroups,
             changeStatus: true,
         }
     });
-    const [sending, setSending] = useState(false);
+
 
     const handleLocalData = (e) => {
 
@@ -30,7 +30,7 @@ const Groups = ({projectId, section, setSection, handleClose, permissionsGroups,
             setLocalData({
                 ...localData,
                 [e.target.name]: e.target.value,
-                ['base_name']: 'intranet.' + ((e.target.value).toLowerCase()).replace(/ /g, '-')
+                ['base_name']: 'intranet.' + slug(e.target.value)
             });
         } else {
             setLocalData({
@@ -81,8 +81,8 @@ const Groups = ({projectId, section, setSection, handleClose, permissionsGroups,
                 });
                 setSending(false);
             }).catch(error => {
-                Services.ErrorCatch(error);
                 setSending(false);
+                Services.ErrorCatch(error);
             });
         }
     }
@@ -96,13 +96,13 @@ const Groups = ({projectId, section, setSection, handleClose, permissionsGroups,
             errors = true;
         }
 
-        if (!localData.group) {
-            setInputError('group', 'Ingrese un grupo.')
+        if (permissionsGroups.includes(localData.group)) {
+            setInputError('group', 'Este grupo ya existe.')
             errors = true;
         }
 
-        if (permissionsGroups.includes(localData.group)) {
-            setInputError('group', 'Este grupo ya existe.')
+        if (!localData.group) {
+            setInputError('group', 'Ingrese un grupo.')
             errors = true;
         }
 

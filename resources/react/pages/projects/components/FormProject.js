@@ -34,8 +34,8 @@ const FormProject = ({data, setData, endpoint}) => {
             });
             setSending(false);
         }).catch(error => {
-            Services.ErrorCatch(error);
             setSending(false);
+            Services.ErrorCatch(error);
         });
     }
 
