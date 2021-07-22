@@ -28,6 +28,7 @@ class ProjectController extends Controller
                 'driver' => 'required',
                 'host' => 'required',
                 'port' => 'required',
+                'database' => 'required',
                 'username' => 'required',
                 'charset' => 'required',
                 'collation' => 'required',
@@ -39,6 +40,7 @@ class ProjectController extends Controller
                 'driver.required' => 'El driver es requerido, mysql es lo habitual.',
                 'host.required' => 'El host es requerido, localhost es por defecto para desarrollo local.',
                 'port.required' => 'El puerto es requerido, 3306 es por defecto para mysql.',
+                'database.required' => 'El nombre de la base de datos es requerido.',
                 'username.required' => 'El username es requerido, root es por defecto para desarrollo local.',
                 'charset.required' => 'El charset es requerido, utf8 es por defecto según nuestras configuraciones.',
                 'collation.required' => 'El collation es requerido, utf8_general_ci es por defecto según nuestras configuraciones.',
@@ -103,17 +105,18 @@ class ProjectController extends Controller
     {
         try {
 
-            $project = Project::find($request->project_id);
+            $project = Project::find($request->id);
 
             if (!$project) {
                 return ApiResponse::JsonError(null, 'Proyecto no encontrado');
             }
 
             $rules = [
-                'name' => 'required|unique:projects,name,' . $request->project_id,
+                'name' => 'required|unique:projects,name,' . $request->id,
                 'driver' => 'required',
                 'host' => 'required',
                 'port' => 'required',
+                'database' => 'required',
                 'username' => 'required',
                 'charset' => 'required',
                 'collation' => 'required',
@@ -125,6 +128,7 @@ class ProjectController extends Controller
                 'driver.required' => 'El driver es requerido, mysql es lo habitual.',
                 'host.required' => 'El host es requerido, localhost es por defecto para desarrollo local.',
                 'port.required' => 'El puerto es requerido, 3306 es por defecto para mysql.',
+                'database.required' => 'El nombre de la base de datos es requerido.',
                 'username.required' => 'El username es requerido, root es por defecto para desarrollo local.',
                 'charset.required' => 'El charset es requerido, utf8 es por defecto según nuestras configuraciones.',
                 'collation.required' => 'El collation es requerido, utf8_general_ci es por defecto según nuestras configuraciones.',

@@ -30,7 +30,7 @@ class PermissionController extends Controller
             return ApiResponse::JsonSuccess([
                 'project' => $project,
                 'permissions_count' => count($permissions),
-                'permissions_group' => $permissions->unique('public_group')->pluck('public_group'),
+                'permissions_groups' => $permissions->unique('public_group')->pluck('public_group'),
                 'permissions' => $permissions
             ]);
 

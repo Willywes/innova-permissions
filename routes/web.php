@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\PermissionController;
+use App\Http\Controllers\ProjectController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,19 +15,29 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('test', function (){
+
+
+
+
+Route::get('test', function () {
     return \App\Models\Project::all();
 });
 
-Route::get('permissions', [\App\Http\Controllers\PermissionController::class, 'index']);
+Route::get('permissions', [PermissionController::class, 'index']);
 
-Route::get('projects/all', [\App\Http\Controllers\ProjectController::class, 'index']);
-Route::post('projects/create', [\App\Http\Controllers\ProjectController::class, 'create']);
-Route::post('projects/store', [\App\Http\Controllers\ProjectController::class, 'store']);
-Route::post('projects/edit', [\App\Http\Controllers\ProjectController::class, 'edit']);
-Route::post('projects/update', [\App\Http\Controllers\ProjectController::class, 'update']);
-Route::post('projects/destroy', [\App\Http\Controllers\ProjectController::class, 'destroy']);
+Route::prefix('api')
+    ->name('api.')
+    ->group(function () {
 
+        Route::get('projects', [ProjectController::class, 'index']);
+        Route::post('projects/create', [ProjectController::class, 'create']);
+        Route::post('projects/store', [ProjectController::class, 'store']);
+        Route::post('projects/edit', [ProjectController::class, 'edit']);
+        Route::post('projects/update', [ProjectController::class, 'update']);
+        Route::post('projects/destroy', [ProjectController::class, 'destroy']);
+
+        Route::post('permissions', [PermissionController::class, 'index']);
+
+    });
 
 Route::view('/{path?}/{pathTwo?}/{pathThree?}/{pathFour?}/{pathFive?}/{pathSix?}', 'webapp.base_react');
-
