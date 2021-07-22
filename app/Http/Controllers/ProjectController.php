@@ -85,7 +85,6 @@ class ProjectController extends Controller
         }
     }
 
-
     public function edit(Request $request): \Illuminate\Http\JsonResponse
     {
         try {
@@ -155,7 +154,6 @@ class ProjectController extends Controller
 
                 $project->laravel_guards = $request->laravel_guards ?? '["intranet", "customer"]';
                 $project->user_classes = $request->user_classes ?? '["User::class", "Customer::class"]';
-
 
                 if ($project->save()) {
                     return ApiResponse::JsonSuccess(['project' => $project], 'Proyecto creado correctamente.');

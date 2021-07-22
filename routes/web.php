@@ -36,10 +36,14 @@ Route::prefix('api')
         Route::post('projects/update', [ProjectController::class, 'update']);
         Route::post('projects/destroy', [ProjectController::class, 'destroy']);
 
+
         Route::post('permissions', [PermissionController::class, 'index']);
         Route::post('permissions/store', [PermissionController::class, 'store']);
         Route::post('permissions/destroy', [PermissionController::class, 'destroy']);
-        Route::post('cell-edit', [PermissionController::class, 'cellEdit']);
+        Route::post('permissions/cell-edit', [PermissionController::class, 'cellEdit']);
+        Route::post('permissions/backup', [PermissionController::class, 'backup']);
+        Route::post('permissions/restore', [PermissionController::class, 'restore']);
+
 
     });
 

@@ -21,6 +21,7 @@ class CreateProjectsTable extends Migration
 }');
             $table->text('laravel_guards')->default('["intranet", "customer"]');
             $table->text('user_classes')->default('["User::class", "Customer::class"]');
+            $table->longText('json')->nullable();
             $table->timestamps();
         });
     }

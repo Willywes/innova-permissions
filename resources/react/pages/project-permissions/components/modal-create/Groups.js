@@ -72,14 +72,12 @@ const Groups = ({projectId, section, setSection, handleClose, permissionsGroups,
                         getPermissions()
                         handleClose()
                     },
-                    warning: () => {
-                        toastr.warning(response.message)
-                    },
                     error: () => {
                         toastr.error(response.message)
+                        setSending(false);
                     },
                 });
-                setSending(false);
+
             }).catch(error => {
                 setSending(false);
                 Services.ErrorCatch(error);

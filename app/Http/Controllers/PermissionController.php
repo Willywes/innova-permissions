@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Permission;
 use App\Models\Project;
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\DB;
@@ -113,6 +114,77 @@ class PermissionController extends Controller
         }
     }
 
+    public function backup(Request $request)
+    {
+        try {
+            $project = Project::find($request->project_id);
+
+            if (!$project) {
+                return ApiResponse::JsonError(null, 'Proyecto no encontrado');
+            }
+
+            $this->setUseDatabase($project);
+
+            $permissions = Permission::all();
+
+            $project->json = $permissions;
+
+            if ($project->save()) {
+                return ApiResponse::JsonSuccess(null, 'Permisos respaldados.');
+            }
+
+            return ApiResponse::JsonError(null, 'No se ha podido respaldar los permisos.');
+
+        } catch (\Exception $exception) {
+            return ApiResponse::JsonError(null, 'Exception ' . $exception->getMessage());
+        }
+    }
+
+    public function restore(Request $request)
+    {
+
+        try {
+            $project = Project::find($request->project_id);
+
+            if (!$project) {
+                return ApiResponse::JsonError(null, 'Proyecto no encontrado');
+            }
+
+            $permissions = json_decode($project->json);
+
+            if (!$permissions) {
+                return ApiResponse::JsonError(null, 'Proyecto no tiene respaldos para restaurar');
+            }
+
+            $this->setUseDatabase($project);
+
+            $remotePermissions = Permission::select(['id'])->get();
+
+            if (count($remotePermissions) == 0 or Permission::whereIn('id', $remotePermissions)->delete()) {
+
+                foreach ($permissions as $data) {
+
+//                    return $data;
+                    Permission::create([
+                        'id' =>$data->id,
+                        'name' =>$data->name,
+                        'guard_name' =>$data->guard_name,
+                        'public_name' =>$data->public_name,
+                        'public_group' =>$data->public_group,
+                        'public_description' =>$data->public_description,
+                        'created_at' =>$data->created_at,
+                        'updated_at' =>$data->updated_at,
+                    ]);
+                }
+                return ApiResponse::JsonSuccess(null, 'Permisos recuperados correctamente.');
+            } else {
+                return ApiResponse::JsonSuccess(null, 'Proceso no realizado.');
+            }
+
+        } catch (\Exception $exception) {
+            return ApiResponse::JsonError(null, 'Exception ' . $exception->getMessage());
+        }
+    }
 
     private function setUseDatabase($project)
     {

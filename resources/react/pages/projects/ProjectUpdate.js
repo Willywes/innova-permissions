@@ -49,7 +49,6 @@ const ProjectUpdate = ({match}) => {
     }, [project])
 
     const getProject = (id) => {
-        console.log(project);
         Services.DoPost(Services.ENDPOINT.PROJECTS.EDIT, {
             project_id: id
         }).then(response => {
@@ -57,9 +56,6 @@ const ProjectUpdate = ({match}) => {
                 response: response,
                 success: () => {
                     setProject(response.data.project)
-                },
-                warning: () => {
-                    toastr.warning(response.message)
                 },
                 error: () => {
                     toastr.error(response.message)

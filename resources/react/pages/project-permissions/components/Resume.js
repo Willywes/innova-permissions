@@ -1,6 +1,8 @@
 import React, {Fragment, useState} from 'react';
 import {Button, Modal} from "react-bootstrap";
 import SimpleCard from "../../../components/SimpleCard";
+import {Link} from "react-router-dom";
+import ROUTES from "../../../routes/routes";
 
 const Resume = ({project, permissionsCount, permissionsGroups, getPermissions}) => {
 
@@ -35,8 +37,16 @@ const Resume = ({project, permissionsCount, permissionsGroups, getPermissions}) 
                             </tr>
                             </tbody>
                         </table>
+                        <div className="row">
+                            <div className="col text-right">
+                                <Link to={ROUTES.PROJECTS.path} className="btn btn-outline-secondary btn-sm">
+                                    <i className="fas fa-arrow-left"/> Volver a proyectos
+                                </Link>
+                            </div>
+                        </div>
                     </SimpleCard>
                 </div>
+
             </div>
 
             <Modal show={show} onHide={handleClose}>

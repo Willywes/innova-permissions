@@ -8,9 +8,11 @@ import moment from "moment";
 import SimpleCard from "../../../components/SimpleCard";
 import ModalCreate from "../components/modal-create/ModalCreate";
 import SweetAlert from "sweetalert2";
+import ModalExport from "../components/modal-export/ModalExport";
 
 const Table = ({project, permissions, permissionsGroups, getPermissions}) => {
 
+    const [saving, setSaving] = useState(false);
     const [tableLoaded, setTableLoaded] = useState(true);
     const [localPermissions, setLocalPermissions] = useState([]);
     const [groupSelected, setGroupSelected] = useState('all')
@@ -19,6 +21,15 @@ const Table = ({project, permissions, permissionsGroups, getPermissions}) => {
 
     const handleClose = () => setShowCreate(false);
     const handleShow = () => setShowCreate(true);
+
+    const [showExport, setShowExport] = useState(false);
+    const [typeExport, setTypeExport] = useState('');
+    const handleExportClose = () => setShowExport(false);
+    const handleExportShow = (type) => {
+        setTypeExport(type)
+        setShowExport(true)
+    };
+
 
     useEffect(() => {
         filterPermissions();
@@ -118,8 +129,8 @@ const Table = ({project, permissions, permissionsGroups, getPermissions}) => {
             classes: 'nowrap-cell nowrap-cell-no-min',
             headerClasses: 'nowrap-cell nowrap-cell-no-min',
             formatter: (cell, row) => {
-                return  <div onClick={() => destroy(row.id, row.name)}
-                             className="text-danger pointer mx-1" title="Eliminar">
+                return <div onClick={() => destroy(row.id, row.name)}
+                            className="text-danger pointer mx-1" title="Eliminar">
                     <i className="fa fa-trash"/>
                 </div>
             }
@@ -190,6 +201,54 @@ const Table = ({project, permissions, permissionsGroups, getPermissions}) => {
         })
     }
 
+    const backup = () => {
+        setSaving(true)
+        Services.DoPost(Services.ENDPOINT.PERMISSIONS.BACKUP,
+            {
+                project_id: project.id,
+            }).then(response => {
+            Services.Response({
+                response: response,
+                success: () => {
+                    toastr.success(response.message)
+                    getPermissions(project.id)
+                    setSaving(false)
+                },
+                error: () => {
+                    toastr.error(response.message)
+                    setSaving(false)
+                },
+            });
+        }).catch(error => {
+            setSaving(false)
+            Services.ErrorCatch(error);
+        });
+    }
+
+    const restore = () => {
+        setSaving(true)
+        Services.DoPost(Services.ENDPOINT.PERMISSIONS.RESTORE,
+            {
+                project_id: project.id,
+            }).then(response => {
+            Services.Response({
+                response: response,
+                success: () => {
+                    toastr.success(response.message)
+                    getPermissions(project.id)
+                    setSaving(false)
+                },
+                error: () => {
+                    toastr.error(response.message)
+                    setSaving(false)
+                },
+            });
+        }).catch(error => {
+            setSaving(false)
+            Services.ErrorCatch(error);
+        });
+    }
+
     return (
         <Fragment>
             <div className="row">
@@ -216,20 +275,50 @@ const Table = ({project, permissions, permissionsGroups, getPermissions}) => {
                                             }
                                         </select>
                                     </div>
+
                                     <div className="col-auto ml-auto">
-                                        <button className="btn btn-primary btn-sm">
-                                            <i className="fas fa-download"/> JSON
+                                        <button className="btn btn-success btn-sm" onClick={backup} disabled={saving}>
+                                            <i className="fas fa-cloud-upload-alt"/> Respaldar
                                         </button>
                                     </div>
+
                                     <div className="col-auto">
-                                        <button className="btn btn-primary btn-sm">
-                                            <i className="fas fa-download"/> Seeder
+                                        <button className="btn btn-danger btn-sm" onClick={restore} disabled={saving}>
+                                            <i className="fas fa-cloud-download-alt"/> Restaurar
                                         </button>
                                     </div>
+
                                     <div className="col-auto">
-                                        <button className="btn btn-primary btn-sm">
-                                            <i className="fas fa-download"/> SQL Script
-                                        </button>
+                                        <div className="btn-group" role="group" aria-label="Basic example">
+                                            {
+                                                project.json ?
+                                                    <button
+                                                        className="btn btn-outline-primary btn-sm"
+                                                        onClick={() => handleExportShow('json')}
+                                                    >
+                                                        <i className="fab fa-js"/> JSON
+                                                    </button> : null
+                                            }
+
+                                            {
+                                                project.json ?
+                                                    <button
+                                                        className="btn btn-outline-primary btn-sm"
+                                                        onClick={() => handleExportShow('php')}
+                                                    >
+                                                        <i className="fab fa-php"/> PHP
+                                                    </button> : null
+                                            }
+                                            {
+                                                project.json ?
+                                                    <button
+                                                        className="btn btn-outline-primary btn-sm"
+                                                        onClick={() =>handleExportShow('sql')}
+                                                    >
+                                                    <i className="fas fa-database"/> SQL
+                                                </button> : null
+                                            }
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -260,6 +349,12 @@ const Table = ({project, permissions, permissionsGroups, getPermissions}) => {
                 permissions={permissions}
                 permissionsGroups={permissionsGroups}
                 getPermissions={() => getPermissions(project.id)}
+            />
+            <ModalExport
+                show={showExport}
+                handleClose={handleExportClose}
+                data={project.json}
+                type={typeExport}
             />
         </Fragment>
     );

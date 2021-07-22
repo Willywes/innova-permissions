@@ -4,6 +4,8 @@ import * as Services from "../../Services";
 import CardProject from "./components/CardProject";
 import ROUTES from "../../routes/routes";
 import {Link} from "react-router-dom";
+import SweetAlert from "sweetalert2";
+import toastr from "toastr";
 
 const Projects = () => {
 
@@ -26,6 +28,45 @@ const Projects = () => {
         });
     }
 
+    const destroy = (id, name = 'este registro') => {
+
+        SweetAlert.fire({
+            title: '¿Estas seguro?',
+            html: 'Si eliminas <b>' + name + '</b>, esto no afectará a los permisos del proyecto.',
+            icon: 'warning',
+            imageSize: '120x120',
+            showCancelButton: true,
+            confirmButtonColor: '#92c755',
+            cancelButtonColor: '#f22314 ',
+            confirmButtonText: 'Si, eliminar!',
+            cancelButtonText: 'No, cancelar!',
+            reverseButtons: false,
+
+        }).then((result) => {
+            if (result.value) {
+                Services.DoPost(Services.ENDPOINT.PROJECTS.DESTROY, {
+                    project_id: id,
+                }).then(response => {
+                    Services.Response({
+                        response: response,
+                        success: () => {
+                            toastr.success(response.message)
+                            getProjects()
+                        },
+                        warning: () => {
+                            toastr.warning(response.message)
+                        },
+                        error: () => {
+                            toastr.error(response.message)
+                        },
+                    });
+                }).catch(error => {
+                    Services.ErrorCatch(error);
+                });
+            }
+        })
+    }
+
 
     return (
         <div className="row">
@@ -43,7 +84,7 @@ const Projects = () => {
             </div>
 
             {
-                projects.map(project => <div key={project.id} className="col-md-4"><CardProject project={project}/></div>)
+                projects.map(project => <div key={project.id} className="col-md-4"><CardProject project={project} destroy={destroy}/></div>)
             }
         </div>
     );

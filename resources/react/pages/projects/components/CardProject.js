@@ -2,19 +2,20 @@ import React, {useEffect, useState} from 'react';
 import {Link} from "react-router-dom";
 import ROUTES from "../../../routes/routes";
 
-const CardProject = ({project}) => {
+const CardProject = ({project, destroy}) => {
 
     const [url, setUrl] = useState({
-        edit : '',
-        permissions : ''
+        edit: '',
+        permissions: ''
     });
 
     useEffect(() => {
         setUrl({
-            edit : ROUTES.PROJECT_EDIT.path.replace(':id', project.id),
-            permissions : ROUTES.PROJECT_PERMISSIONS.path.replace(':id', project.id)
+            edit: ROUTES.PROJECT_EDIT.path.replace(':id', project.id),
+            permissions: ROUTES.PROJECT_PERMISSIONS.path.replace(':id', project.id)
         });
     }, [project])
+
 
     return (
         <div className="card card-project mb-4">
@@ -34,10 +35,16 @@ const CardProject = ({project}) => {
                             Proyectos
                         </Link>
                     </div>
-                    <div className="col text-right">
+                    <div className="col-auto px-1 text-right">
                         <Link to={url.edit} className="btn btn-outline-warning btn-sm">
                             <i className="fa fa-edit"/>
                         </Link>
+                    </div>
+                    <div className="col-auto pl-1 text-right">
+                        <button onClick={() => destroy(project.id, project.name)}
+                                className="btn btn-outline-danger btn-sm">
+                            <i className="fa fa-trash"/>
+                        </button>
                     </div>
                 </div>
             </div>

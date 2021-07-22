@@ -25,14 +25,11 @@ const FormProject = ({data, setData, endpoint}) => {
                     toastr.success(response.message)
                     return window.location.href = ROUTES.PROJECTS.path;
                 },
-                warning: () => {
-                    toastr.warning(response.message)
-                },
                 error: () => {
                     toastr.error(response.message)
+                    setSending(false);
                 },
             });
-            setSending(false);
         }).catch(error => {
             setSending(false);
             Services.ErrorCatch(error);

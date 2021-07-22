@@ -15,7 +15,8 @@ class Project extends Model
         'description',
         'database_connection',
         'laravel_guards',
-        'user_classes'
+        'user_classes',
+        'json',
     ];
 
     protected $casts = [

@@ -78,11 +78,14 @@ export const ENDPOINT = {
         EDIT : GetBaseURL() + 'projects/edit',
         UPDATE : GetBaseURL() + 'projects/update',
         DESTROY : GetBaseURL() + 'projects/destroy',
+
     },
     PERMISSIONS : {
         INDEX : GetBaseURL() + 'permissions',
         STORE : GetBaseURL() + 'permissions/store',
         DESTROY : GetBaseURL() + 'permissions/destroy',
-        CELL_EDIT : GetBaseURL() + 'cell-edit',
+        CELL_EDIT : GetBaseURL() + 'permissions/cell-edit',
+        BACKUP : GetBaseURL() + 'permissions/backup',
+        RESTORE : GetBaseURL() + 'permissions/restore',
     }
 }
